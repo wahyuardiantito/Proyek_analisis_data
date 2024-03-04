@@ -1,8 +1,15 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
+import requests
+from PIL import Image
+from io import BytesIO
+from io import StringIO
 
-csv_data = r'C:\Users\LENOVO\Proyek_analisis_data\dataset\all_data.csv'
+# Mengunduh data dari URL CSV
+url_csv = "https://raw.githubusercontent.com/wahyuardiantito/Proyek_analisis_data/main/dataset/all_data.csv"
+response_csv = requests.get(url_csv)
+csv_data = StringIO(response_csv.text)
 
 # Load data
 all_df = pd.read_csv(csv_data)
